@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>My Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    // profile picture?
-    // name
-    // 
-
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/">CodeFellowship</a>
+                <a th:unless="${user}" href="/login">Log in</a>
+                <a th:unless="${user}" href="/signup">Sign up</a>
+                <a th:if="${user}" href="logout">Log out</a>
+            </nav>
+        </header>
+        <main>
+            <img src="https://picsum.photos/200"/>
+            <h1 th:text="${user.name}">Username</h1>
+            <h1 th:text="${profile.firstName}">First Name</h1>
+            <h1 th:text="${profile.lastName}">Last Name</h1>
+            <h2 th:text="${profile.dateOfBirth}">Date of Birth</h2>
+            <p th:text="${profile.bio}">Bio</p>
+        </main>
+    </div>
 </body>
 </html>
