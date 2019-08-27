@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Log In</title>
+    <title>Single User Search</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -26,28 +26,17 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="d-flex justify-content-center">
         <br/>
-        <h1 class="display-3">CodeFellowship</h1>
-        <br/>
-        <div class="d-flex justify-content-center">
-            <div class="w-25 p-3 card">
-                <h1 class="display-5">Log in</h1>
-                <form method="POST" action="/login">
-                    <ul class="list-unstyled">
-                        <li>
-                            <label for="username"> Username: </label><input type="text" name="username" id="username" />
-                        </li>
-                        <br/>
-                        <li>
-                            <label for="password">Password: </label><input type="password" name="password" id="password" />
-                        </li>
-                        <br/>
-                        <li>
-                            <input class="btn btn-primary btn-lg" type="submit" />
-                        </li>
-                    </ul>
-                </form>
+        <div class="card w-50 p-3">
+            <img class="card-img-top" src="https://picsum.photos/200/50" alt="profile picture"/>
+            <h1 class="card-header" th:text="${searchedUser.username}">Username</h1>
+            <div class="card-body">
+                <h3 class="card-title"><span th:text="${searchedUser.firstName}">First Name</span>
+                    <span th:text="${searchedUser.lastName}">Last Name</span></h3>
+                <p class="card-subtitle mb-2 text-muted">Date of Birth: <span th:text="${searchedUser.dateOfBirth}">Date of Birth</span></p>
+                <h4 class="card-title">Bio:</h4>
+                <p th:text="${searchedUser.bio}">Bio</p>
             </div>
         </div>
     </main>
