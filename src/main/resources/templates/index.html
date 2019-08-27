@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeFellowship</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">CodeFellowship</a>
+            <a th:unless="${user}" href="/login">Log in</a>
+            <a th:unless="${user}" href="/signup">Sign up</a>
+            <a th:if="${user}" href="logout">Log out</a>
+        </nav>
+    </header>
+    <h1>CodeFellowship</h1>
+
+</body>
+</html>
