@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeFellowship</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="text-center">
+    <div class="container">
+        <header>
+            <nav>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">CodeFellowship</a>
+                    </li>
+                    <li class="nav-item" th:unless="${user}">
+                        <a class="nav-link" href="/login">Log in</a>
+                    </li>
+                    <li class="nav-item" th:unless="${user}">
+                        <a class="nav-link" href="/signup">Sign up</a>
+                    </li>
+                    <li class="nav-item" th:if="${user}">
+                        <a class="nav-link" href="logout">Log out</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <br/>
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to</h1>
+                <h1 class="display-2">CodeFellowship<span th:if="${user}">,</span></h1>
+                <h1 class="display-5" th:if="${user}"><span th:text="${user.name}">username</span></span></h1>
+                <p class="lead">An app that allows people learning to code to connect with each other and support each other on their coding journeys.</p>
+                <hr class="my-2">
+                <div th:unless="${user}">
+                    <p>Get started</p>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="/signup" role="button">Sign Up</a>
+                        <a class="btn btn-primary btn-lg" href="/login" role="button">Log In</a>
+                    </p>
+                </div>
+                <div th:if="${user}">
+                    <p>Visit your profile</p>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="/myprofile" role="button">My Profile</a>
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="text-center">
+<div class="container">
+    <header>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">CodeFellowship</a>
+                </li>
+                <li class="nav-item" th:unless="${user}">
+                    <a class="nav-link" href="/login">Log in</a>
+                </li>
+                <li class="nav-item" th:unless="${user}">
+                    <a class="nav-link" href="/signup">Sign up</a>
+                </li>
+                <li class="nav-item" th:if="${user}">
+                    <a class="nav-link" href="logout">Log out</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <br/>
+        <h1 class="display-3">CodeFellowship</h1>
+        <br/>
+        <div class="d-flex justify-content-center">
+            <div class="w-25 p-3 card">
+                <h1 class="display-5">Log in</h1>
+                <form method="POST" action="/login">
+                    <ul class="list-unstyled">
+                        <li>
+                            <label for="username"> Username: </label><input type="text" name="username" id="username" />
+                        </li>
+                        <br/>
+                        <li>
+                            <label for="password">Password: </label><input type="password" name="password" id="password" />
+                        </li>
+                        <br/>
+                        <li>
+                            <input class="btn btn-primary btn-lg" type="submit" />
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
