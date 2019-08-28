@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="text-center">
+    <div class="container">
+        <header>
+            <nav th:replace="fragments/nav :: nav"></nav>
+        </header>
+        <main>
+            <!--Error page example from: -->
+            <!--https://www.logicbig.com/tutorials/spring-framework/spring-boot/custom-thymeleaf-error-page.html-->
+            <h1>Oops! <span th:text="${error}">error type</span></h1>
+            <div class="text-left">
+                <ul class="list-unstyled">
+                    <li class="m-2">
+                        <span class="font-weight-bold">Error status: </span><span th:text="${status}">code</span>
+                    </li>
+                    <li class="m-2">
+                        <span class="font-weight-bold">Path: </span><span th:text="${path}">path</span>
+                    </li>
+                    <li class="m-2">
+                        <span class="font-weight-bold"> Message: </span><span th:text="${message}">error message</span>
+                    </li>
+                    <li class="m-2">
+                        <span class="font-weight-bold">Exception: </span><span th:text="${exception}">exception</span>
+                    </li>
+                    <li class="m-2">
+                        <span class="font-weight-bold">Trace: </span><br/>
+                        <span th:text="${trace}">trace</span>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

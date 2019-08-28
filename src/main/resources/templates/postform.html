@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Create a New Post</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -17,26 +17,16 @@
             <br/>
             <div class="d-flex justify-content-center">
                 <div class="w-50 p-3 card">
-                    <h1 class="display-5">Sign up</h1>
+                    <h1 class="display-5">Create a new post</h1>
                     <br/>
-                    <form method="POST" action="/users">
+                    <form method="POST" action="/posts/create">
                         <ul class="list-unstyled">
                             <li>
-                                <label for="firstName">First Name: </label><input type="text" name="firstName" id="firstName" />
-                                <label for="lastName">Last Name: </label><input type="text" name="lastName" id="lastName" />
+                                <label for="title">Title: </label><input type="text" name="title" id="title" />
                             </li>
                             <br/>
                             <li>
-                                <label for="username"> Username: </label><input type="text" name="username" id="username" />
-                                <label for="password">Password: </label><input type="password" name="password" id="password" />
-                            </li>
-                            <br/>
-                            <li>
-                                <label for="dateOfBirth">Date of Birth: </label><input type="date" name="dateOfBirth" id="dateOfBirth" />
-                            </li>
-                            <br/>
-                            <li>
-                                <label for="bio">Bio: </label><input class="form-control input-lg" type="text" name="bio" id="bio" />
+                                <label for="body">Body: </label><input type="text" name="body" id="body" />
                             </li>
                             <br/>
                             <li>
