@@ -3,12 +3,10 @@ package com.marishaoza.codefellowship.models;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -22,6 +20,8 @@ public class ApplicationUser implements UserDetails {
     String lastName;
     String bio;
     Date dateOfBirth;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author")
+    List<Post> posts;
 
     // ---------------------------- Constructors -------------------------------
 
@@ -65,6 +65,10 @@ public class ApplicationUser implements UserDetails {
 
     public Date getDateOfBirth() {
         return this.dateOfBirth;
+    }
+
+    public List<Post> getPosts() {
+        return this.posts;
     }
 
     // ---------------------------- Methods -------------------------------

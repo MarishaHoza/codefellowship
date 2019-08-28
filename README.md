@@ -33,11 +33,15 @@ $ gradle bootRun
 ```
 
 ## Available Routes
+Public routes:
 * `/` splash page with links to login, signup, and view profile
 * `/login` login page
 * `/signup` sign up page to create a new account
-* `/myprofile` logged in user's profile page
-* `/users/{id}` view a user's information
+
+Private routes (user must be logged in):
+* `/myprofile` logged in user's profile page and posts
+* `/users/{id}` view a user's information and posts
+* `/posts/create` create a new post
 
 
 ## Feature Tasks
@@ -54,3 +58,22 @@ $ gradle bootRun
 -[x] Ensure that user registration also logs users into your app automatically.
 -[x] The site should be reasonably styled. (This can be using CSS that you did not create yourself.)
 -[x] The site should contain integration testing. At a minimum, there should be tests to ensure basic functionality for the splash page and the sign up page.
+
+### Lab 17: CodeFellowship Profiles with Login
+-[x] Allow users to log in to CodeFellowship and create posts.
+-[x] Add the ability for users to log in to your app.
+-[x] Upon logging in, users should be taken to a /myprofile route that displays their information.
+-[x] Ensure that your homepage, login, and registration routes are accessible to non-logged in users. All other routes should be limited to logged-in users.
+-[x] Ensure that user registration also logs users into your app automatically.
+-[x] Add a Post entity to your app.
+    -[x] A Post has a body and a createdAt timestamp.
+-[x] A logged-in user should be able to create a Post, and a post should belong to the user that created it.
+     hint: this is a relationship between two pieces of data
+-[x] A user’s posts should be visible on their profile page.
+-[x] When a user is logged in, the app should display the user’s username on every page (probably in the heading).
+
+
+## Resources
+* [Spring Auth Cheat Sheet](https://github.com/codefellows/seattle-java-401d2/blob/master/SpringAuthCheatSheet.md)
+* [PostgreSQL Column Definition](https://docs.oracle.com/javaee/5/api/javax/persistence/Column.html#columnDefinition())
+* [Bootstrap Cheat Sheet](https://hackerthemes.com/bootstrap-cheatsheet/)

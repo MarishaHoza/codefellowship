@@ -48,13 +48,13 @@ public class ApplicationUserController {
     public String getMyProfile(Principal p, Model m) {
         m.addAttribute("profile", applicationUserRepository.findByUsername(p.getName()));
         m.addAttribute("user", p);
-        return "myprofile";
+        return "oneuser";
     }
 
     @GetMapping("/users/{id}")
     public String getOneUser(@PathVariable long id, Model m) {
-        ApplicationUser searchedUser = applicationUserRepository.findById(id).get();
-        m.addAttribute("searchedUser", searchedUser);
+        ApplicationUser profile = applicationUserRepository.findById(id).get();
+        m.addAttribute("profile", profile);
         return "oneuser";
     }
 }

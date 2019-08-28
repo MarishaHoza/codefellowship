@@ -9,22 +9,7 @@
 <body class="text-center">
 <div class="container">
     <header>
-        <nav>
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/">CodeFellowship</a>
-                </li>
-                <li class="nav-item" th:unless="${user}">
-                    <a class="nav-link" href="/login">Log in</a>
-                </li>
-                <li class="nav-item" th:unless="${user}">
-                    <a class="nav-link" href="/signup">Sign up</a>
-                </li>
-                <li class="nav-item" th:if="${user}">
-                    <a class="nav-link" href="logout">Log out</a>
-                </li>
-            </ul>
-        </nav>
+        <nav th:replace="fragments/nav :: nav"></nav>
     </header>
     <main>
         <br/>
