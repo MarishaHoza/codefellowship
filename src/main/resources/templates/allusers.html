@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="text-center">
+    <div class="container">
+        <header>
+            <nav th:replace="fragments/nav :: nav"></nav>
+        </header>
+        <main class="d-flex flex-wrap justify-content-around align-content-stretch mt-3">
+
+            <div th:each="profile : ${allAppUsers}" class="d-flex w-20 m-2">
+                <a th:href="@{/users/{id}(id=${profile.id})}">
+                    <div th:replace="fragments/appuser :: appUser(profile=${profile})"> user </div>
+                </a>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>

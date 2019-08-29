@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><span ${profile.username}>username</span>'s Profile</title>
+    <title>User Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -13,22 +13,15 @@
         <nav th:replace="fragments/nav :: nav"></nav>
     </header>
     <main class="d-flex justify-content-around mt-3">
+
         <div class="w-25">
-            <div class="card p-3">
-                <img class="card-img-top" src="https://picsum.photos/200/100" alt="profile picture"/>
-                <h1 class="card-header" th:text="${profile.username}">Username</h1>
-                <div class="card-body">
-                    <h3 class="card-title"><span th:text="${profile.firstName}">First Name</span>
-                        <span th:text="${profile.lastName}">Last Name</span></h3>
-                    <p class="card-subtitle mb-2 text-muted">Date of Birth: <span th:text="${#dates.format(profile.dateOfBirth, 'MM/dd/yy')}">Date of Birth</span></p>
-                    <h4 class="card-title">Bio:</h4>
-                    <p th:text="${profile.bio}">Bio</p>
-                </div>
+            <div  th:replace="fragments/appuser :: appUser(profile=${profile})"> user</div>
+            <div th:if="${profile.username != user.name}">
+                <form method="POST" action="/users/follow">
+                    <button type="submit" name="id" th:value="${profile.id}">Follow</button>
+                </form>
             </div>
-            <br/>
         </div>
-
-
 
 
         <div class="w-75 ml-2 card">

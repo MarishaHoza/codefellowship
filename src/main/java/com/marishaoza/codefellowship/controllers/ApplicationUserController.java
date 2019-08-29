@@ -2,6 +2,7 @@ package com.marishaoza.codefellowship.controllers;
 
 import com.marishaoza.codefellowship.models.ApplicationUser;
 import com.marishaoza.codefellowship.models.ApplicationUserRepository;
+import com.marishaoza.codefellowship.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,6 +18,9 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ApplicationUserController {
@@ -52,9 +56,39 @@ public class ApplicationUserController {
     }
 
     @GetMapping("/users/{id}")
-    public String getOneUser(@PathVariable long id, Model m) {
+    public String getOneUser(@PathVariable long id, Principal p, Model m) {
         ApplicationUser profile = applicationUserRepository.findById(id).get();
         m.addAttribute("profile", profile);
+        m.addAttribute("user", p);
         return "oneuser";
+    }
+
+    @GetMapping("/users")
+    public String getAllUsers(Model m, Principal p) {
+        m.addAttribute("user", p);
+        m.addAttribute("allAppUsers", applicationUserRepository.findAll());
+        return "allusers";
+    }
+
+    @PostMapping("/users/follow")
+    public RedirectView followAUser(long id, Principal p) {
+        ApplicationUser loggedInUser = applicationUserRepository.findByUsername(p.getName());
+        ApplicationUser followedUser = applicationUserRepository.findById(id).get();
+        loggedInUser.addUserIFollow(followedUser);
+        applicationUserRepository.save(loggedInUser);
+        return new RedirectView("/users");
+    }
+
+    @GetMapping("/feed")
+    public String getFeed(Principal p, Model m) {
+        ApplicationUser loggedInUser = applicationUserRepository.findByUsername(p.getName());
+        Set<ApplicationUser> usersWhoIFollow = loggedInUser.getUsersWhoIFollow();
+        List<Post> followedPosts = new LinkedList<>();
+        for ( ApplicationUser user : usersWhoIFollow ) {
+            followedPosts.addAll( user.getPosts() );
+        }
+        m.addAttribute("feed", followedPosts);
+        m.addAttribute("user", p);
+        return "feed";
     }
 }
