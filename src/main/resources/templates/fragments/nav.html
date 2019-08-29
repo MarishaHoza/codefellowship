@@ -2,18 +2,34 @@
 <html lang="en">
 
 <nav th:fragment="nav">
-    <ul class="nav justify-content-center">
+    <ul class="nav justify-content-center navbar navbar-dark bg-info fixed-top">
         <li class="nav-item">
-            <a class="nav-link" href="/">CodeFellowship</a>
+            <a class="nav-link text-light" href="/">CodeFellowship (Home)</a>
+        </li>
+
+        <!--        NOT logged in          -->
+        <li class="nav-item" th:unless="${user}">
+            <a class="nav-link text-light" href="/login">Log In</a>
         </li>
         <li class="nav-item" th:unless="${user}">
-            <a class="nav-link" href="/login">Log in</a>
+            <a class="nav-link text-light" href="/signup">Sign Up</a>
         </li>
-        <li class="nav-item" th:unless="${user}">
-            <a class="nav-link" href="/signup">Sign up</a>
+
+        <!--        logged in          -->
+        <li class="nav-item" th:if="${user}">
+            <a class="nav-link text-light" href="/users">Discover</a>
         </li>
         <li class="nav-item" th:if="${user}">
-            <a class="nav-link" href="logout">Log out <span th:text="${user.name}">username</span></a>
+            <a class="nav-link text-light" href="/myprofile">My Profile</a>
+        </li>
+        <li class="nav-item" th:if="${user}">
+            <a class="nav-link text-light" href="/feed">My Feed</a>
+        </li>
+        <li class="nav-item" th:if="${user}">
+            <a class="nav-link text-light" href="/posts/create">Write</a>
+        </li>
+        <li class="nav-item" th:if="${user}">
+            <a class="nav-link text-light" href="/logout">Log Out <span th:text="${user.name}">username</span></a>
         </li>
     </ul>
 </nav>

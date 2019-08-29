@@ -77,3 +77,6 @@ Private routes (user must be logged in):
 * [Spring Auth Cheat Sheet](https://github.com/codefellows/seattle-java-401d2/blob/master/SpringAuthCheatSheet.md)
 * [PostgreSQL Column Definition](https://docs.oracle.com/javaee/5/api/javax/persistence/Column.html#columnDefinition())
 * [Bootstrap Cheat Sheet](https://hackerthemes.com/bootstrap-cheatsheet/)
+* [Bootstrap Form Inputs](https://www.w3schools.com/bootstrap4/bootstrap_forms_inputs.asp)
+* [CSS Flexbox text-overflow](https://css-tricks.com/flexbox-truncated-text/)
+* [CSS Flexbox text-overflow example](https://codepen.io/chriscoyier/pen/zqedErc)

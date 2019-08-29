@@ -5,17 +5,18 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/flex.css">
 </head>
 <body class="text-center">
     <div class="container">
         <header>
             <nav th:replace="fragments/nav :: nav"></nav>
         </header>
-        <main class="d-flex flex-wrap justify-content-around align-content-stretch mt-3">
+        <main class="d-flex flex-wrap justify-content-start align-items-stretch align-content-stretch mt-5">
 
-            <div th:each="profile : ${allAppUsers}" class="d-flex w-20 m-2">
+            <div th:each="profile : ${allAppUsers}" class="m-2 mw-2 long-and-truncated-with-child-corrected">
                 <a th:href="@{/users/{id}(id=${profile.id})}">
-                    <div th:replace="fragments/appuser :: appUser(profile=${profile})"> user </div>
+                    <div class="shadow-sm" th:replace="fragments/appuser :: appUser(profile=${profile})"> user </div>
                 </a>
             </div>
 

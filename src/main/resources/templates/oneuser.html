@@ -12,28 +12,32 @@
     <header>
         <nav th:replace="fragments/nav :: nav"></nav>
     </header>
-    <main class="d-flex justify-content-around mt-3">
+    <main class="d-flex justify-content-around mt-5">
 
-        <div class="w-25">
+        <div class="w-25 mt-2">
             <div  th:replace="fragments/appuser :: appUser(profile=${profile})"> user</div>
             <div th:if="${profile.username != user.name}">
                 <form method="POST" action="/users/follow">
-                    <button type="submit" name="id" th:value="${profile.id}">Follow</button>
+                    <button class="btn btn-info w-75" type="submit" name="id" th:value="${profile.id}">Follow</button>
                 </form>
             </div>
         </div>
 
 
-        <div class="w-75 ml-2 card">
-            <h2 class="display-4">Posts</h2>
+        <div class="w-75 ml-2 card mt-4">
+            <h2 class="display-4 mt-2">
+                <span th:if="${profile.username == user.name}">My </span>
+                <span th:if="${profile.username != user.name}" th:text="${profile.username}">Username</span><span th:if="${profile.username != user.name}">'s </span>
+                Posts
+            </h2>
 
-            <div th:each="post : ${profile.posts}" class="card p-3 m-3">
+            <div th:each="post : ${profile.posts}" class="card m-3">
                 <div class="card-header d-flex justify-content-between">
                     <h3 th:text="${post.title}">Title</h3>
                     <p><span th:text="${#dates.monthNameShort(post.createdAt)}">month</span>
                         <span th:text="${#dates.format(post.createdAt, 'dd, yyyy - HH:mm')}">day, year</span></p>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-left">
                     <p th:text="${post.body}">body</p>
                 </div>
             </div>

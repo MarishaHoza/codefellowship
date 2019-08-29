@@ -16,7 +16,8 @@ public class HomeController {
     }
 
     @GetMapping("/signup")
-    public String getSignup() {
+    public String getSignup(Principal p, Model m) {
+        m.addAttribute("user", p);
         return "signup";
     }
 

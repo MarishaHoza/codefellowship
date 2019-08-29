@@ -11,30 +11,21 @@
         <header>
             <nav th:replace="fragments/nav :: nav"></nav>
         </header>
-        <main>
-            <br/>
-            <h1 class="display-3">CodeFellowship</h1>
-            <br/>
-            <div class="d-flex justify-content-center">
-                <div class="w-50 p-3 card">
-                    <h1 class="display-5">Create a new post</h1>
-                    <br/>
-                    <form method="POST" action="/posts/create">
-                        <ul class="list-unstyled">
-                            <li>
-                                <label for="title">Title: </label><input type="text" name="title" id="title" />
-                            </li>
-                            <br/>
-                            <li>
-                                <label for="body">Body: </label><input type="text" name="body" id="body" />
-                            </li>
-                            <br/>
-                            <li>
-                                <input class="btn btn-primary btn-lg" type="submit" />
-                            </li>
-                        </ul>
-                    </form>
-                </div>
+        <main class="d-flex justify-content-center mt-5">
+            <div class="w-75 p-3 card mt-5">
+                <h1 class="display-5 mb-5">Create a new post</h1>
+                <form method="POST" action="/posts/create">
+                    <ul class="list-unstyled text-left">
+                        <li class="form-group">
+                            <label for="title">Title: </label><input class="form-control" type="text" name="title" id="title" />
+                        </li>
+                        <br/>
+                        <li class="form-group">
+                            <label for="body">Body: </label><textarea class="form-control" rows="5" type="text" name="body" id="body" ></textarea>
+                        </li>
+                    </ul>
+                    <input class="btn btn-primary btn-lg" type="submit" />
+                </form>
             </div>
         </main>
     </div>

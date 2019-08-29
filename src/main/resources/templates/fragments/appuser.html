@@ -2,15 +2,15 @@
 <html lang="en">
 
 
-<div th:fragment="appUser" class="card p-3">
-    <img class="card-img-top" src="https://picsum.photos/200/100" alt="profile picture"/>
+<div th:fragment="appUser" class="card mw-10 m-3">
+    <img class="card-img-top" src="/profilePic.jpg" alt="profile picture"/>
     <h1 class="card-header" th:text="${profile.username}">Username</h1>
-    <div class="card-body">
+    <div class="card-body mw-10">
         <h3 class="card-title"><span th:text="${profile.firstName}">First Name</span>
             <span th:text="${profile.lastName}">Last Name</span></h3>
         <p class="card-subtitle mb-2 text-muted">Date of Birth: <span th:text="${#dates.format(profile.dateOfBirth, 'MM/dd/yy')}">Date of Birth</span></p>
         <h4 class="card-title">Bio:</h4>
-        <p th:text="${profile.bio}">Bio</p>
+        <p class="text-wrap" th:text="${profile.bio}">Bio</p>
     </div>
 </div>
 
