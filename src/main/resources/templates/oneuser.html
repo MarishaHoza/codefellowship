@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><span ${profile.username}>username</span>'s Profile</title>
+    <title>User Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -12,35 +12,32 @@
     <header>
         <nav th:replace="fragments/nav :: nav"></nav>
     </header>
-    <main class="d-flex justify-content-around mt-3">
-        <div class="w-25">
-            <div class="card p-3">
-                <img class="card-img-top" src="https://picsum.photos/200/100" alt="profile picture"/>
-                <h1 class="card-header" th:text="${profile.username}">Username</h1>
-                <div class="card-body">
-                    <h3 class="card-title"><span th:text="${profile.firstName}">First Name</span>
-                        <span th:text="${profile.lastName}">Last Name</span></h3>
-                    <p class="card-subtitle mb-2 text-muted">Date of Birth: <span th:text="${#dates.format(profile.dateOfBirth, 'MM/dd/yy')}">Date of Birth</span></p>
-                    <h4 class="card-title">Bio:</h4>
-                    <p th:text="${profile.bio}">Bio</p>
-                </div>
+    <main class="d-flex justify-content-around mt-5">
+
+        <div class="w-25 mt-2">
+            <div  th:replace="fragments/appuser :: appUser(profile=${profile})"> user</div>
+            <div th:if="${profile.username != user.name}">
+                <form method="POST" action="/users/follow">
+                    <button class="btn btn-info w-75" type="submit" name="id" th:value="${profile.id}">Follow</button>
+                </form>
             </div>
-            <br/>
         </div>
 
 
+        <div class="w-75 ml-2 card mt-4">
+            <h2 class="display-4 mt-2">
+                <span th:if="${profile.username == user.name}">My </span>
+                <span th:if="${profile.username != user.name}" th:text="${profile.username}">Username</span><span th:if="${profile.username != user.name}">'s </span>
+                Posts
+            </h2>
 
-
-        <div class="w-75 ml-2 card">
-            <h2 class="display-4">Posts</h2>
-
-            <div th:each="post : ${profile.posts}" class="card p-3 m-3">
+            <div th:each="post : ${profile.posts}" class="card m-3">
                 <div class="card-header d-flex justify-content-between">
                     <h3 th:text="${post.title}">Title</h3>
                     <p><span th:text="${#dates.monthNameShort(post.createdAt)}">month</span>
                         <span th:text="${#dates.format(post.createdAt, 'dd, yyyy - HH:mm')}">day, year</span></p>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-left">
                     <p th:text="${post.body}">body</p>
                 </div>
             </div>

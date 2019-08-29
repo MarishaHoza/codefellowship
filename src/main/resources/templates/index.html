@@ -11,7 +11,7 @@
         <header>
             <nav th:replace="fragments/nav :: nav"></nav>
         </header>
-        <main>
+        <main class="mt-5">
             <br/>
             <div class="jumbotron">
                 <h1 class="display-4">Welcome to</h1>
@@ -29,7 +29,7 @@
                 <div th:if="${user}">
                     <p>Visit your profile</p>
                     <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="/myprofile" role="button">My Profile</a>
+                        <a class="btn btn-info btn-lg" href="/myprofile" role="button">My Profile</a>
                     </p>
                 </div>
             </div>

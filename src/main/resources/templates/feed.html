@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="text-center">
+    <div class="container">
+        <header>
+            <nav th:replace="fragments/nav :: nav"></nav>
+        </header>
+        <main class="d-flex flex-wrap justify-content-start align-content-stretch mt-5">
+            <div class="w-100 mt-4">
+                <h1>Your Feed</h1>
+            </div>
+
+
+
+            <div class="card w-100 m-3" th:each="post : ${feed}">
+                <div class="media text-left">
+                    <img width="50px" class="d-flex align-self-start m-3" src="/profilePic.jpg">
+                    <div class="media-body">
+                        <div class="d-flex flex-wrap justify-content-between p-3 card-header">
+                            <h3 class="mt-0 d-inline-block w-75" th:text="${post.title}">title</h3>
+                            <h5 class="d-inline-block w-25 text-right"><span th:text="${#dates.monthNameShort(post.createdAt)}">month</span>
+                                <span th:text="${#dates.format(post.createdAt, 'dd, yyyy - HH:mm')}">day, year</span></h5>
+                            <h4 class="" th:text="${post.author}">author</h4>
+                        </div>
+                        <p class="pl-3 pr-3" th:text="${post.body}">body</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+</body>
+</html>

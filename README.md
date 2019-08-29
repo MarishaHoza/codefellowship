@@ -42,6 +42,8 @@ Private routes (user must be logged in):
 * `/myprofile` logged in user's profile page and posts
 * `/users/{id}` view a user's information and posts
 * `/posts/create` create a new post
+* `/users` view all users
+* `/feed` view a feed containing posts from users you follow
 
 
 ## Feature Tasks
@@ -72,8 +74,19 @@ Private routes (user must be logged in):
 -[x] A user’s posts should be visible on their profile page.
 -[x] When a user is logged in, the app should display the user’s username on every page (probably in the heading).
 
+### Lab 18: Following Users on CodeFellowship
+-[x] Ensure that users can’t perform SQL injection or HTML injection with their posts.
+-[x] Allow users to follow other users. Following a user means that their posts show up in the logged-in user’s feed, where they can see what all of their followed users have posted recently.
+    -[x] Ensure there is some way (like a users index page) that a user can discover other users on the service.
+    -[x] On a user profile page that does NOT belong to the currently logged-in user, display a “Follow” button. When a user clicks that follow button, the logged-in user is now following the viewed-profile-page user.
+        -[x] note: this will require a self-join on ApplicationUsers.
+    -[x] A user can visit a url (like /feed) to view all of the posts from the users that they follow.
+        -[x] Each post should have a link to the user profile of the user who wrote the post.
 
 ## Resources
 * [Spring Auth Cheat Sheet](https://github.com/codefellows/seattle-java-401d2/blob/master/SpringAuthCheatSheet.md)
 * [PostgreSQL Column Definition](https://docs.oracle.com/javaee/5/api/javax/persistence/Column.html#columnDefinition())
 * [Bootstrap Cheat Sheet](https://hackerthemes.com/bootstrap-cheatsheet/)
+* [Bootstrap Form Inputs](https://www.w3schools.com/bootstrap4/bootstrap_forms_inputs.asp)
+* [CSS Flexbox text-overflow](https://css-tricks.com/flexbox-truncated-text/)
+* [CSS Flexbox text-overflow example](https://codepen.io/chriscoyier/pen/zqedErc)
