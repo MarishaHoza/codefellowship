@@ -16,18 +16,27 @@
 
         <div class="w-25 mt-2">
             <div  th:replace="fragments/appuser :: appUser(profile=${profile})"> user</div>
-            <div th:if="${profile.username != user.name}">
+
+
+            <div th:if="${profile.id != me.id}">
                 <form method="POST" action="/users/follow">
                     <button class="btn btn-info w-75" type="submit" name="id" th:value="${profile.id}">Follow</button>
                 </form>
             </div>
+
+            <div th:if="${profile.id != me.id}">
+                <form method="POST" action="/users/unfollow">
+                    <button class="btn btn-warning w-75" type="submit" name="id" th:value="${profile.id}">Unfollow</button>
+                </form>
+            </div>
+
         </div>
 
 
         <div class="w-75 ml-2 card mt-4">
             <h2 class="display-4 mt-2">
-                <span th:if="${profile.username == user.name}">My </span>
-                <span th:if="${profile.username != user.name}" th:text="${profile.username}">Username</span><span th:if="${profile.username != user.name}">'s </span>
+                <span th:if="${profile.id == me.id}">My </span>
+                <span th:if="${profile.id != me.id}" th:text="${profile.username}">Username</span><span th:if="${profile.id != me.id}">'s </span>
                 Posts
             </h2>
 

@@ -122,6 +122,10 @@ public class ApplicationUser implements UserDetails {
         usersWhoIFollow.add(followedUser);
     }
 
+    public void removeUserIFollow(ApplicationUser followedUser){
+        usersWhoIFollow.remove(followedUser);
+    }
+
 
     public String toString() {
         return String.format("%s (%s %s)", this.username, this.firstName, this.lastName);

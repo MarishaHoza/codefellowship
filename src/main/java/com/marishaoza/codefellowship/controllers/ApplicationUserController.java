@@ -51,14 +51,15 @@ public class ApplicationUserController {
     @GetMapping("/myprofile")
     public String getMyProfile(Principal p, Model m) {
         m.addAttribute("profile", applicationUserRepository.findByUsername(p.getName()));
+        m.addAttribute("me", applicationUserRepository.findByUsername(p.getName()));
         m.addAttribute("user", p);
         return "oneuser";
     }
 
     @GetMapping("/users/{id}")
     public String getOneUser(@PathVariable long id, Principal p, Model m) {
-        ApplicationUser profile = applicationUserRepository.findById(id).get();
-        m.addAttribute("profile", profile);
+        m.addAttribute("profile", applicationUserRepository.findById(id).get());
+        m.addAttribute("me", applicationUserRepository.findByUsername(p.getName()));
         m.addAttribute("user", p);
         return "oneuser";
     }
@@ -76,7 +77,16 @@ public class ApplicationUserController {
         ApplicationUser followedUser = applicationUserRepository.findById(id).get();
         loggedInUser.addUserIFollow(followedUser);
         applicationUserRepository.save(loggedInUser);
-        return new RedirectView("/users");
+        return new RedirectView("/feed");
+    }
+
+    @PostMapping("/users/unfollow")
+    public RedirectView unfollowUser(long id, Principal p) {
+        ApplicationUser loggedInUser = applicationUserRepository.findByUsername(p.getName());
+        ApplicationUser followedUser = applicationUserRepository.findById(id).get();
+        loggedInUser.removeUserIFollow(followedUser);
+        applicationUserRepository.save(loggedInUser);
+        return new RedirectView("/feed");
     }
 
     @GetMapping("/feed")
